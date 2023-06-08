@@ -1,0 +1,49 @@
+name: Publish
+
+on: [push, pull_request]
+
+env:
+  MIRROR_URL: git@github.com:epitech-toulouse/TiktokBot.git
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependency
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y build-essential
+          timeout 3m npm i || exit 1
+
+      - name: Execute
+        run: |
+          timeout 30s node ./index.js || exit 0
+
+      - name: Check Result
+        run: |
+          if [ $? -eq 0 ]; then
+            echo "The program has timeout successfully"
+          else
+            echo "The program send error"
+            exit 1
+          fi
+
+  publish:
+    needs: [compile]
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - uses: pixta-dev/repository-mirroring-action@v1
+        with:
+          target_repo_url:
+            ${{ env.MIRROR_URL }}
+          ssh_private_key:
+            ${{ secrets.SSH_KEY }}
