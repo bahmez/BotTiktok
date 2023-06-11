@@ -1,0 +1,2 @@
+export const TOKEN = "MTA0NTA0ODUxMjcyNDg2NTExNg.Gop5pF.JqCZpfzPAiFm7fgsUp-IfhUQfyXeiSH_1ueYWw"
+export const CLIENTID = "1045048512724865116"
