@@ -1,0 +1,51 @@
+- name: create directory result
+  file:
+    path: /var/www/BotTiktok
+    state: directory
+
+- name: unarchive bot.tar
+  unarchive:
+    src: bot.tar
+    dest: /var/www/BotTiktok/
+    extra_opts: [--strip-components=1]
+
+- name: install node
+  apt:
+    name: nodejs
+    state: present
+
+- name: install npm
+  apt:
+    name: npm
+    state: present
+
+- name: Install packages based on package.json in DiscordBot
+  npm:
+    path: /var/www/BotTiktok/DiscordBot
+
+- name: Install packages based on package.json in backgroundSaver
+  npm:
+    path: /var/www/BotTiktok/backgroundSaver
+
+- name: Install packages based on package.json in clipEditor
+  npm:
+    path: /var/www/BotTiktok/videoEditor/clipEditor
+
+- name: Install packages based on package.json in redditEditor
+  npm:
+    path: /var/www/BotTiktok/videoEditor/redditEditor
+
+- name: Install packages based on package.json in youtubeEditor
+  npm:
+    path: /var/www/BotTiktok/videoEditor/youtubeEditor
+
+- name: Template service
+  template:
+    src: templates/BotTiktok.j2
+    dest: /etc/systemd/system/BotTiktok.service
+    mode: '0644'
+
+- name: Start service result, if not started
+  service:
+    name: BotTiktok.service
+    state: started

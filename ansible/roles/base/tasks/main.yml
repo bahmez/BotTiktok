@@ -1,0 +1,19 @@
+- name: Installation of git
+  become: yes
+  apt:
+    name: git
+    state: present
+    update_cache: yes
+
+- name: upgrade apt packages
+  become: true
+  apt:
+    upgrade: yes
+    update_cache: yes
+    cache_valid_time: 86400
+
+- name: Upgrade packages on servers
+  become: yes
+  apt:
+    upgrade: dist
+    force_apt_get: yes
