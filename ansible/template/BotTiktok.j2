@@ -1,0 +1,9 @@
+[Unit]
+Description=BotTiktok
+
+[Service]
+Environment=PATH=/usr/local/bin:/usr/sbin:/usr/local/sbin:/bin:/sbin
+ExecStart=node index.js
+User={{ remote_user }}
+WorkingDirectory=/var/www/BotTiktok/DiscordBot
+Restart=always
