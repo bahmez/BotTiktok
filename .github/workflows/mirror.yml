@@ -20,7 +20,7 @@ jobs:
 
       - name: Execute
         run: |
-          timeout 30s node ./index.js || exit 0
+          timeout 30s node ./DiscordBot/index.js || exit 0
 
       - name: Check Result
         run: |
