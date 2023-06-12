@@ -125,6 +125,7 @@ function splitMulti(str, tokens){
 async function CreateSpeechStory() {
     var storyPart = splitMulti(story, [".", ":", "!", "?", ";", ",", "(", ")", "[", "]"])
     var concatArg = "concat:";
+    let j = 0;
 
     config(sessionID);
     for (let i = 0; i < storyPart.length; i++) {
@@ -132,13 +133,14 @@ async function CreateSpeechStory() {
             console.error("Story too long")
             process.exit(84)
         }
-        if (storyPart[i].length === 0)
+        if (storyPart[i].length === 0 || !/[a-zA-Z0-9]/.test(storyPart[i]))
             continue;
-        await createAudioFromText(encodeURIComponent(storyPart[i]), `${__dirname}/temp/audio/${i}`, langType[lang]);
+        await createAudioFromText(encodeURIComponent(storyPart[i]), `${__dirname}/temp/audio/${j}`, langType[lang]);
         await sleep(500)
-        if (i !== 0)
-            concatArg += '|';   
-        concatArg += __dirname + "/temp/audio/" + i + ".mp3";
+        if (j !== 0)
+            concatArg += '|';
+        concatArg += __dirname + "/temp/audio/" + j + ".mp3";
+        j++;
     }
     await exec(`"${pathToFfmpeg}" -i "${concatArg}" -acodec copy ${__dirname}/temp/audio_result.mp3`);
 }
