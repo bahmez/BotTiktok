@@ -1,0 +1,20 @@
+{
+    // Utilisez IntelliSense pour en savoir plus sur les attributs possibles.
+    // Pointez pour afficher la description des attributs existants.
+    // Pour plus d'informations, visitez : https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Lancer le programme",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "argsExpansion": "none",
+            "program": "${workspaceFolder}\\index.js",
+            "args": ["0", "https://production.assets.clips.twitchcdn.net/j92lTfSmMHWgtZFsfEy0Ew/AT-cm%7Cj92lTfSmMHWgtZFsfEy0Ew.mp4?sig=d91ed707ff08ad7324f7f73587c6a8ed1d73e328&token=%7B%22authorization%22%3A%7B%22forbidden%22%3Afalse%2C%22reason%22%3A%22%22%7D%2C%22clip_uri%22%3A%22https%3A%2F%2Fproduction.assets.clips.twitchcdn.net%2Fj92lTfSmMHWgtZFsfEy0Ew%2FAT-cm%257Cj92lTfSmMHWgtZFsfEy0Ew.mp4%22%2C%22device_id%22%3A%22ecd4d86542e866d4%22%2C%22expires%22%3A1669017689%2C%22user_id%22%3A%22%22%2C%22version%22%3A2%7D"
+            , "./backgrounds/01/", "je suis un titre"]
+        }
+    ]
+}
