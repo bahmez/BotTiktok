@@ -1,6 +1,6 @@
-import { handleReponseReddit, onSubmitFormReddit } from "../../../Downloads/FarmNetworkAccount/DiscordBot/editor/redditEditor.js";
-import { handleReponseTwitch, onSubmitFormTwitch } from "../../../Downloads/FarmNetworkAccount/DiscordBot/editor/twitchEditor.js";
-import { handleReponseYoutube, onSubmitFormYoutube } from "../../../Downloads/FarmNetworkAccount/DiscordBot/editor/youtubeEditor.js";
+import { handleReponseReddit, onSubmitFormReddit } from "../editor/redditEditor.js";
+import { handleReponseTwitch, onSubmitFormTwitch } from "../editor/twitchEditor.js";
+import { handleReponseYoutube, onSubmitFormYoutube } from "../editor/youtubeEditor.js";
 
 export default async function index(interaction) {
     Executor.forEach((exec) => {

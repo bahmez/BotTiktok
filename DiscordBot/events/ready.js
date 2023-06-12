@@ -1,10 +1,10 @@
 import * as fs from 'fs';
-import { getRandomInt } from '../../../Downloads/FarmNetworkAccount/DiscordBot/utils/random.js';
+import { getRandomInt } from '../utils/random.js';
 import fetch from 'node-fetch';
 import puppeteer from 'puppeteer';
 import { setTimeout } from 'timers/promises';
-import { youtubeEditor } from '../../../Downloads/FarmNetworkAccount/DiscordBot/editor/youtubeEditor.js';
-import { twitchEditor } from '../../../Downloads/FarmNetworkAccount/DiscordBot/editor/twitchEditor.js';
+import { youtubeEditor } from '../editor/youtubeEditor.js';
+import { twitchEditor } from '../editor/twitchEditor.js';
 
 export default function index(client) {
     console.log("C'est prêt !");
